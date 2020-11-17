@@ -31,3 +31,26 @@ void hideCursor(void)
     info.bVisible = FALSE;
     SetConsoleCursorInfo(consoleHandle, &info);
 }
+
+int getWindowWidth(void)
+{
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
+    return csbi.srWindow.Right - csbi.srWindow.Left + 1;
+}
+
+int getWindowHeight(void)
+{
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
+    return csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
+}
+
+void getWindowSize(int *ptrWidth, int *ptrHeight)
+{
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+
+    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
+    *ptrWidth   = csbi.srWindow.Right - csbi.srWindow.Left + 1;
+    *ptrHeight  = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
+}

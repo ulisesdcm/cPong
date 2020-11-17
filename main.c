@@ -16,12 +16,12 @@ eCommand    usrInput = IDLE;
 int main(void)
 {
     hideCursor();
-    int countX = 20;
-    int countY = 20;
-
+    int countX = 10;
+    int countY = 10;
+    
     while(1)
     {
-        
+
         clearScreen();
         usrInput = scanKeyboard();
         gotoxy(countX,countY);
