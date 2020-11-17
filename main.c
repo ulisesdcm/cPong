@@ -11,22 +11,48 @@ typedef enum
 }egameState;
 
 egameState gameState = STATE_START;
+eCommand    usrInput = IDLE;
 
 int main(void)
 {
+    hideCursor();
+    int countX = 20;
+    int countY = 20;
+
     while(1)
     {
-        printf("HY world!!\n");
-    }
-
-    for(int j =0; j<3; j++)
-    {
-        for(int i= 0; i<100; i++)
+        clearScreen();
+        usrInput = scanKeyboard();
+        gotoxy(countX,countY);
+        putchar('x');            
+        delay(10);
+        switch (gameState)
         {
-            clearScreen();
-            gotoxy(i+20,10);
-            putchar('x');
-            delay(10);
+        case STATE_IDLE:
+            break;
+        case STATE_START:
+            switch (usrInput)
+            {
+            case GO_UP:
+                countY--;
+                break;
+            case GO_DOWN:
+                countY++;
+                break;
+            case GO_LEFT:
+                countX--;
+                break;
+            case GO_RIGTH:
+                countX++;
+                break;
+            case EXIT:
+                return 0;
+            }
+            break;
+        case STATE_END:
+            break;
+        case STATE_PAUSE:
+            break;
         }
     }
     return 1;

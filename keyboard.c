@@ -1,15 +1,15 @@
 #include "keyboard.h"
 #include "conio.h"
+#include <stdio.h>
 
 eCommand scanKeyboard(void)
 {
-    static int tmpInput = 0;
+    int tmpInput = 0;
     eCommand rtCommand  = IDLE;
-
-    if(!kbhit())
+    if(kbhit())
     {
         tmpInput = getch();
-
+        // printf("Key pressed %d \n",tmpInput);
         switch (tmpInput)
         {
         case KYB_USR_UP:
@@ -35,6 +35,6 @@ eCommand scanKeyboard(void)
             break;
         }
     }
-
+    // printf("Command return %d\n",rtCommand);
     return rtCommand;   
 }
