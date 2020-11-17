@@ -1,8 +1,9 @@
 #ifndef __BALL_H
 #define __BALL_H
 
+#define BALL_MAX_LIMIT  50
 
-struct sBall 
+typedef struct  
 {
     unsigned char   id;
     unsigned char   shape;        //ASCII value
@@ -10,7 +11,9 @@ struct sBall
     unsigned int    posX;
     unsigned int    posY;
     unsigned int    status;
-};
+}sBall;
+
+ 
 
 void createBall(sBall *ball);
 void destroyBall(sBall *ball);

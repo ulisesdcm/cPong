@@ -10,11 +10,10 @@ typedef enum
 
 int main(void)
 {
-    //testing`
-    //Main loop
     while(1)
     {
 
     }
+    
     return 1;
 }
