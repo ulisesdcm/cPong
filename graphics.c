@@ -63,8 +63,8 @@ void windowRefresh(void)
     {
         if(ballList[i].id != 0)
         {
-            gotoxy(ballList[i].posX,ballList[i].posY);
-            putchar(ballList[i].shape);
+            gotoxy(ballList[i].shape.posX,ballList[i].shape.posY);
+            putchar(ballList[i].shape.image);
         }else
         {
             break;

@@ -1,6 +1,12 @@
 #ifndef __BAR_H
 #define __BAR_H
 
+#define BAR_MAX_LIMIT   2
+#define BAR_DFLT_SHAPE  219
+#define BAR_DFLT_SPEED  1
+#define BAR_DFLT_LNGTH  5
+#define BAR_DFLT_WDTH   1
+
 typedef struct 
 {
     unsigned char id;
@@ -8,14 +14,14 @@ typedef struct
     unsigned char speed;
     unsigned char posX;
     unsigned char posY;
-    unsigned char status;
     unsigned char length;
     unsigned char width;
 }sBar;
 
-void createBar(sBar *bar);
-void destroyBar(sBar *bar);
+sBar barList[BAR_MAX_LIMIT];
 
+int createBar(void);
+int destroyBar(void);
 
 
 #endif

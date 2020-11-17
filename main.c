@@ -20,7 +20,6 @@ int main(void)
 
     while(1)
     {
-        
         usrInput = scanKeyboard();
         windowRefresh();
 
@@ -32,20 +31,21 @@ int main(void)
             switch (usrInput)
             {
             case GO_UP:
-                ballList[0].posY--;//= ballList[0].speed;
+                // ballList[0].posY--;//= ballList[0].speed;
                 break;
             case GO_DOWN:
-                ballList[0].posY++;//= ballList[0].speed;
+                // ballList[0].posY++;//= ballList[0].speed;
                 break;
             case GO_LEFT:
-                ballList[0].posX--;//= ballList[0].speed;
+                createBall();
+                // ballList[0].posX--;//= ballList[0].speed;
                 break;
             case GO_RIGTH:
-                // ballList[0].posX++;//= ballList[0].speed;
                 destroyBall();
+                // ballList[0].posX++;//= ballList[0].speed;
                 break;
             case PAUSE:
-                createBall();
+                // createBall();
                 break;
             case EXIT:
                 return 0;
