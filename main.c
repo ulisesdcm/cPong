@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "graphics.h"
-#include <conio.h>
+#include "keyboard.h"
 
 typedef enum
 {
@@ -14,17 +14,9 @@ egameState gameState = STATE_START;
 
 int main(void)
 {
-    int input = 0;
     while(1)
     {
-        if(!kbhit())
-        {
-            input = getch();
-            printf("Key pressed: %d \n",input);
-            if(input == 27)
-                return 0;
-        }
-
+        printf("HY world!!\n");
     }
 
     for(int j =0; j<3; j++)
