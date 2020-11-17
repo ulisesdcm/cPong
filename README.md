@@ -4,7 +4,6 @@
 
 ## Description
 Clasic ping-pong game using C, gcurrently this only work using windows OS,
-testing github connection
 ## Requeriments
 WINDOWS O.S
 
