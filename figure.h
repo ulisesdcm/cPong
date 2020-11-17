@@ -10,5 +10,4 @@ typedef struct
     unsigned int  posY;
 }sFigure;
 
-
 #endif

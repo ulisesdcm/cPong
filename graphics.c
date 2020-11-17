@@ -41,6 +41,7 @@ int getWindowWidth(void)
 
 int getWindowHeight(void)
 {
+    
     CONSOLE_SCREEN_BUFFER_INFO csbi;
     GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
     return csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
