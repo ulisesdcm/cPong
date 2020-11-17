@@ -21,6 +21,7 @@ int main(void)
 
     while(1)
     {
+        
         clearScreen();
         usrInput = scanKeyboard();
         gotoxy(countX,countY);
