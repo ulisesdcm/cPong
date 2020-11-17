@@ -1,10 +1,11 @@
 #ifndef __GRAPHICS_H
 #define __GRAPHICS_H
 
-#include <stdio.h>
-#include <conio.h>
 
 
-void clear_screen(void);
- 
+void clearScreen(void);
+void gotoxy(int x, int y);
+void delay(int milliSeconds);
+void hideCursor(void);
+
 #endif

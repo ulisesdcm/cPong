@@ -1,0 +1,29 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>30</x><y>340</y><w>220</w><h>90</h></coordinates><panel_attributes>ball
+--
+posX:int
+posY:int
+--
+create():void
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>300</x><y>350</y><w>210</w><h>120</h></coordinates><panel_attributes>bar
+--
+posX: int
+posY:int
+shape:char
+--
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>50</x><y>110</y><w>120</w><h>110</h></coordinates><panel_attributes>/Figure/
+posX: int
+posY: int
+shape: char
+--
+create():void
+destroy():void
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>150</x><y>190</y><w>40</w><h>170</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;150;20;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>260</x><y>110</y><w>200</w><h>110</h></coordinates><panel_attributes>User
+--
+posX: int
+posY: int
+--
+test():int
+</panel_attributes><additional_attributes></additional_attributes></element></diagram>

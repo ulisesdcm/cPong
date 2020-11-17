@@ -2,6 +2,11 @@
 #define __BALL_H
 
 #define BALL_MAX_LIMIT  50
+#define BALL_DFLT_SHAPE '@'
+#define BALL_DFLT_SPEED 10
+#define BALL_DFLT_POSX  50
+#define BALL_DFLT_POSY  50
+
 
 typedef struct  
 {
@@ -10,13 +15,14 @@ typedef struct
     unsigned int    speed;              
     unsigned int    posX;
     unsigned int    posY;
-    unsigned int    status;
 }sBall;
 
  
 
-void createBall(sBall *ball);
-void destroyBall(sBall *ball);
+int createBall(void);
+int destroyBall(void);
+void drawSingleBall(unsigned char id);
+void drawAllBall(void);
 
 //Set funtions
 void setBallPositionX(sBall *ball, unsigned int PosX);
