@@ -17,6 +17,8 @@ typedef enum
     GO_LEFT,
     GO_RIGTH,
     PAUSE,
+    ADD,
+    REMOVE,
     EXIT
 }eCommand;
 

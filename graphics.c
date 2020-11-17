@@ -1,8 +1,8 @@
 #include "graphics.h"
-#include <stdlib.h>
+#include "ball.h"
 #include <windows.h>
 #include <time.h>
-
+#include <stdio.h>
 
 void clearScreen(void)
 {
@@ -53,4 +53,22 @@ void getWindowSize(int *ptrWidth, int *ptrHeight)
     GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
     *ptrWidth   = csbi.srWindow.Right - csbi.srWindow.Left + 1;
     *ptrHeight  = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
+}
+
+void windowRefresh(void)
+{
+    clearScreen();
+    // Drawing balls
+    for(int i = 0; i<BALL_MAX_LIMIT; i++)
+    {
+        if(ballList[i].id != 0)
+        {
+            gotoxy(ballList[i].posX,ballList[i].posY);
+            putchar(ballList[i].shape);
+        }else
+        {
+            break;
+        }
+    }
+    delay(SCREEN_REFRESH_TIME_MS);
 }

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "graphics.h"
 #include "keyboard.h"
+#include "ball.h"
 
 typedef enum
 {
@@ -16,17 +17,13 @@ eCommand    usrInput = IDLE;
 int main(void)
 {
     hideCursor();
-    int countX = 10;
-    int countY = 10;
-    
+
     while(1)
     {
-
-        clearScreen();
+        
         usrInput = scanKeyboard();
-        gotoxy(countX,countY);
-        putchar('x');            
-        delay(10);
+        windowRefresh();
+
         switch (gameState)
         {
         case STATE_IDLE:
@@ -35,16 +32,20 @@ int main(void)
             switch (usrInput)
             {
             case GO_UP:
-                countY--;
+                ballList[0].posY--;//= ballList[0].speed;
                 break;
             case GO_DOWN:
-                countY++;
+                ballList[0].posY++;//= ballList[0].speed;
                 break;
             case GO_LEFT:
-                countX--;
+                ballList[0].posX--;//= ballList[0].speed;
                 break;
             case GO_RIGTH:
-                countX++;
+                // ballList[0].posX++;//= ballList[0].speed;
+                destroyBall();
+                break;
+            case PAUSE:
+                createBall();
                 break;
             case EXIT:
                 return 0;
