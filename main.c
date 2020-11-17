@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "graphics.h"
+#include <conio.h>
 
 typedef enum
 {
@@ -9,11 +10,21 @@ typedef enum
     STATE_PAUSE,
 }egameState;
 
+egameState gameState = STATE_START;
+
 int main(void)
 {
+    int input = 0;
     while(1)
     {
-        
+        if(!kbhit())
+        {
+            input = getch();
+            printf("Key pressed: %d \n",input);
+            if(input == 27)
+                return 0;
+        }
+
     }
 
     for(int j =0; j<3; j++)
