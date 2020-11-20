@@ -15,6 +15,7 @@ typedef enum
     NO_COLLISION
 }eCOLLISIONBALL;
 
+sBall ballList[BALL_MAX_LIMIT];
 static int ballListIndx = 0;
 static eCOLLISIONBALL checkCollisionEvent(int posX, int posY);
 

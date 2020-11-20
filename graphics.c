@@ -1,9 +1,13 @@
-#include "graphics.h"
-#include "ball.h"
 #include <windows.h>
 #include <time.h>
 #include <stdio.h>
+#include "graphics.h"
+#include "ball.h"
 #include "screen.h"
+#include "bar.h"
+
+extern sBall ballList[BALL_MAX_LIMIT];
+extern sBar barList[BAR_MAX_LIMIT];
 
 void clearScreen(void)
 {
@@ -74,7 +78,41 @@ void windowRefresh(void)
             break;
         }
     }
-    
+
+    // Drawing bars
+    for(int i=0; i<BAR_MAX_LIMIT; i++)
+    {
+        if(barList[i].id !=0)
+        {
+            int limit1,limit2,tmpPosx,tmpPosy,tmpImage;
+
+            if(barList[i].type == BAR_HORIZONTAL)
+            {
+                limit1 = barList[i].shape.width;
+                limit2 = barList[i].shape.height;
+            }else
+            {
+                limit1 = barList[i].shape.height;
+                limit2 = barList[i].shape.width;
+            }
+            tmpPosx     = barList[i].shape.posX;
+            tmpPosy     = barList[i].shape.posY;
+            tmpImage    = barList[i].shape.image;
+
+            for(int j=0; j<limit1; j++)
+            {
+                for(int k=0; k<limit2; k++)
+                {
+                    gotoxy(tmpPosx+j,tmpPosy+k);
+                    putchar(tmpImage);
+                }
+            }
+        }else
+        {
+            break;
+        }
+    }   
+
     // Draw status bar count
     drawStatusBar(ballCount);
 

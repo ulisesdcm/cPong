@@ -4,6 +4,7 @@
 #include "keyboard.h"
 #include "ball.h"
 #include "screen.h"
+#include "bar.h"
 
 // #include ""
 typedef enum
@@ -21,14 +22,18 @@ void initSystem(void);
 int main(void)
 {
     initSystem();
+    createBar(BAR_HORIZONTAL, 10, 10);
+    createBar(BAR_VERTICAL, 20, 20);
 
     while(1)
     {
         usrInput = scanKeyboard();
         windowRefresh();
+        getchar();
+
         moveAllBall();
-    
         int randX,randY;
+
         switch (gameState)
         {
         case STATE_IDLE:

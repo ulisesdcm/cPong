@@ -1,5 +1,5 @@
-run.exe: main.c graphics.c keyboard.c ball.c screen.c
-	gcc main.c graphics.c keyboard.c ball.c screen.c -o run.exe
+run.exe: main.c graphics.c keyboard.c ball.c screen.c bar.c
+	gcc main.c graphics.c keyboard.c ball.c screen.c bar.c -o run.exe
 
 main.o: main.c
 	gcc -c main.c
@@ -15,3 +15,6 @@ ball.o: ball.c
 
 screen.o: screen.c
 	gcc -c screen.c
+
+bar.o: bar.c
+	gcc -c bar.c

@@ -5,6 +5,7 @@
 
 #define BALL_MAX_LIMIT  250
 #define BALL_DFLT_SHAPE 254     //Look ascii table
+// #define BALL_DFLT_SHAPE '#'     //Look ascii table
 #define BALL_DFLT_SPEEDX 1
 #define BALL_DFLT_SPEEDY 1
 #define BALL_DFLT_POSX  10
@@ -19,8 +20,6 @@ typedef struct
     int             speedY;
     sFigure         shape;              
 }sBall;
-
-sBall ballList[BALL_MAX_LIMIT];
 
 int createBall(int initPosX, int initPosY);
 int destroyBall(void);
