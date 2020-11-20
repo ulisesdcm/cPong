@@ -6,8 +6,8 @@
 #define BALL_MAX_LIMIT  500
 #define BALL_DFLT_SHAPE 219     //Look ascii table
 // #define BALL_DFLT_SHAPE '#'     //Look ascii table
-#define BALL_DFLT_SPEEDX 1
-#define BALL_DFLT_SPEEDY 1
+#define BALL_DFLT_SPEEDX 2
+#define BALL_DFLT_SPEEDY 2
 #define BALL_DFLT_POSX  10
 #define BALL_DFLT_POSY  10
 #define BALL_DFTL_WDTH  1
