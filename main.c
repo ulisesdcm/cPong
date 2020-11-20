@@ -17,12 +17,14 @@ eCommand    usrInput = IDLE;
 int main(void)
 {
     hideCursor();
-
+    createBall();
+    createBall();
     while(1)
     {
         usrInput = scanKeyboard();
+        moveBall(1);
+        moveBall(2);
         windowRefresh();
-
         switch (gameState)
         {
         case STATE_IDLE:
@@ -37,11 +39,11 @@ int main(void)
                 // ballList[0].posY++;//= ballList[0].speed;
                 break;
             case GO_LEFT:
-                createBall();
+                // createBall();
                 // ballList[0].posX--;//= ballList[0].speed;
                 break;
             case GO_RIGTH:
-                destroyBall();
+                // destroyBall();
                 // ballList[0].posX++;//= ballList[0].speed;
                 break;
             case PAUSE:

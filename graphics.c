@@ -47,13 +47,13 @@ int getWindowHeight(void)
     return csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
 }
 
-void getWindowSize(int *ptrWidth, int *ptrHeight)
+void getWindowSize(int *ptrX, int *ptrY)
 {
     CONSOLE_SCREEN_BUFFER_INFO csbi;
 
     GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
-    *ptrWidth   = csbi.srWindow.Right - csbi.srWindow.Left + 1;
-    *ptrHeight  = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
+    *ptrX   = csbi.srWindow.Right - csbi.srWindow.Left + 1;
+    *ptrY  = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
 }
 
 void windowRefresh(void)

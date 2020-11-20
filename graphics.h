@@ -9,7 +9,7 @@ void delay(int milliSeconds);
 void hideCursor(void);
 int getWindowHeight(void);
 int getWindowWidth(void);
-void getWindowSize(int *ptrWidth, int *ptrHeight);
+void getWindowSize(int *ptrX, int *ptrY);
 void windowRefresh(void);
 
 #endif
