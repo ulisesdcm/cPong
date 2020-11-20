@@ -26,5 +26,5 @@ int createBall(void);
 int destroyBall(void);
 
 int moveBall(int id);
-void setDirection
+// void setDirection
 #endif
