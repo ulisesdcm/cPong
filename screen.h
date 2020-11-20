@@ -2,4 +2,6 @@
 #define __SCREEN_H
 
 
+void drawStatusBar(int count);
+
 #endif

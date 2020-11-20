@@ -1,7 +1,7 @@
 #ifndef __GRAPHICS_H
 #define __GRAPHICS_H
 
-#define SCREEN_REFRESH_TIME_MS  1
+#define SCREEN_REFRESH_TIME_MS  10
 
 void clearScreen(void);
 void gotoxy(int x, int y);

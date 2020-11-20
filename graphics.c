@@ -3,6 +3,7 @@
 #include <windows.h>
 #include <time.h>
 #include <stdio.h>
+#include "screen.h"
 
 void clearScreen(void)
 {
@@ -57,19 +58,25 @@ void getWindowSize(int *ptrX, int *ptrY)
 }
 
 void windowRefresh(void)
-{
+{    
     clearScreen();
+    int ballCount;
+
     // Drawing balls
-    for(int i = 0; i<BALL_MAX_LIMIT; i++)
+    for(ballCount = 0; ballCount<BALL_MAX_LIMIT; ballCount++)
     {
-        if(ballList[i].id != 0)
+        if(ballList[ballCount].id != 0)
         {
-            gotoxy(ballList[i].shape.posX,ballList[i].shape.posY);
-            putchar(ballList[i].shape.image);
+            gotoxy(ballList[ballCount].shape.posX,ballList[ballCount].shape.posY);
+            putchar(ballList[ballCount].shape.image);
         }else
         {
             break;
         }
     }
+    
+    // Draw status bar count
+    drawStatusBar(ballCount);
+
     delay(SCREEN_REFRESH_TIME_MS);
 }
