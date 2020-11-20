@@ -22,15 +22,11 @@ void initSystem(void);
 int main(void)
 {
     initSystem();
-    createBar(BAR_HORIZONTAL, 10, 10);
-    createBar(BAR_VERTICAL, 20, 20);
 
     while(1)
     {
         usrInput = scanKeyboard();
         windowRefresh();
-        getchar();
-
         moveAllBall();
         int randX,randY;
 
@@ -71,5 +67,7 @@ int main(void)
 void initSystem(void)
 {
     hideCursor();
+    clearScreen();
     drawStatusBar(0);
+
 }

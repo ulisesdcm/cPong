@@ -8,6 +8,7 @@
 
 extern sBall ballList[BALL_MAX_LIMIT];
 extern sBar barList[BAR_MAX_LIMIT];
+extern int oldPostBall[2][BALL_MAX_LIMIT];
 
 void clearScreen(void)
 {
@@ -63,12 +64,13 @@ void getWindowSize(int *ptrX, int *ptrY)
 
 void windowRefresh(void)
 {    
-    clearScreen();
     int ballCount;
-
+    
     // Drawing balls
     for(ballCount = 0; ballCount<BALL_MAX_LIMIT; ballCount++)
     {
+        gotoxy(oldPostBall[0][ballCount],oldPostBall[1][ballCount]);
+        putchar(' ');
         if(ballList[ballCount].id != 0)
         {
             gotoxy(ballList[ballCount].shape.posX,ballList[ballCount].shape.posY);

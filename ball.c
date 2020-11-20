@@ -16,6 +16,8 @@ typedef enum
 }eCOLLISIONBALL;
 
 sBall ballList[BALL_MAX_LIMIT];
+int oldPostBall[2][BALL_MAX_LIMIT] = {0};
+
 static int ballListIndx = 0;
 static eCOLLISIONBALL checkCollisionEvent(int posX, int posY);
 
@@ -63,6 +65,11 @@ int moveSingleBall(int id)
     if(ballList[indxBall].id == 0)
         return 0;
 
+    // Save old position
+    oldPostBall[0][indxBall] = ballList[indxBall].shape.posX;
+    oldPostBall[1][indxBall] = ballList[indxBall].shape.posY;
+    
+    //Get new position
     int newPosX = ballList[indxBall].shape.posX + ballList[indxBall].speedX;
     int newPosY = ballList[indxBall].shape.posY + ballList[indxBall].speedY;
 
@@ -139,15 +146,6 @@ int moveAllBall(void)
     return count;
 }
 
-int getCountBalls(void)
-{
-    for(int i=0;i<sizeof(ballList);i++)
-    {
-        if(!moveSingleBall(i+1))
-            break;
-    }
-}
-
 static eCOLLISIONBALL checkCollisionEvent(int posX, int posY)
 {
     eCOLLISIONBALL retColl = NO_COLLISION;
@@ -157,11 +155,11 @@ static eCOLLISIONBALL checkCollisionEvent(int posX, int posY)
     //Check collision corner
     if(posX <= 0 && posY <= 0)              retColl = COLLISION_CORNER1;
     else if(posX >= winX && posY <= 0 )     retColl = COLLISION_CORNER2;
-    else if(posX >= winX && posY >= winY)   retColl = COLLISION_CORNER3;
-    else if(posX <= 0 && posY >= winY)      retColl = COLLISION_CORNER4;
+    else if(posX >= winX && posY >= winY-1)   retColl = COLLISION_CORNER3;
+    else if(posX <= 0 && posY >= winY-1)      retColl = COLLISION_CORNER4;
     if(posX >= winX)                   retColl = COLLISION_RIGHT;
     else if(posX <= 0)                      retColl = COLLISION_LEFT;
-    else if(posY >= winY)                   retColl = COLLISION_DOWN;
+    else if(posY >= winY-1)                   retColl = COLLISION_DOWN;
     else if(posY <= 0)                      retColl = COLLISION_UP;
 
     return retColl;
