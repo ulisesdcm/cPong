@@ -18,7 +18,7 @@ typedef enum
 static int ballListIndx = 0;
 static eCOLLISIONBALL checkCollisionEvent(int posX, int posY);
 
-int createBall(void)
+int createBall(int initPosX, int initPosY)
 {
     if(ballListIndx < BALL_MAX_LIMIT)
     {
@@ -26,8 +26,8 @@ int createBall(void)
         ballList[ballListIndx].speedX           = BALL_DFLT_SPEEDX;
         ballList[ballListIndx].speedY           = BALL_DFLT_SPEEDY;
         ballList[ballListIndx].shape.image      = BALL_DFLT_SHAPE;
-        ballList[ballListIndx].shape.posX       = BALL_DFLT_POSX;
-        ballList[ballListIndx].shape.posY       = BALL_DFLT_POSY;
+        ballList[ballListIndx].shape.posX       = initPosX;
+        ballList[ballListIndx].shape.posY       = initPosY;
         ballList[ballListIndx].shape.width      = BALL_DFTL_WDTH;
         ballList[ballListIndx].shape.height     = BALL_DFTL_HGHT;
         ballListIndx++;
@@ -55,15 +55,16 @@ int destroyBall(void)
 }
 
 
-int moveBall(int id)
+int moveSingleBall(int id)
 {
     int indxBall = id-1;
-    // Check colision with the window
+    // Check ball ID 
+    if(ballList[indxBall].id == 0)
+        return 0;
+
     int newPosX = ballList[indxBall].shape.posX + ballList[indxBall].speedX;
     int newPosY = ballList[indxBall].shape.posY + ballList[indxBall].speedY;
 
-    // printf("newPOSX %d", indxBall);
-    // getchar();
     switch(checkCollisionEvent(newPosX, newPosY))
     {
         case(COLLISION_RIGHT):
@@ -97,12 +98,54 @@ int moveBall(int id)
     }
       
     ballList[indxBall].shape.posX = newPosX;
-    ballList[indxBall].shape.posY = newPosY;                        
-
-    // ballList[id-1].shape.posX =
-    return 1; 
+    ballList[indxBall].shape.posY = newPosY;
+    return 1;                        
 }
 
+void getBallPosition(int id, int *posX, int *posY)
+{
+    *posX = ballList[id-1].shape.posX;
+    *posY = ballList[id-1].shape.posY;
+}
+
+void setBallPosition(int id, int newPosX, int newPosY)
+{
+    ballList[id-1].shape.posX = newPosX;
+    ballList[id-1].shape.posY = newPosY;
+}
+
+void setBallSpeed(int id, int newSpeedX, int newSpeedY)
+{
+    ballList[id-1].speedX = newSpeedX;
+    ballList[id-1].speedY = newSpeedY;
+}
+
+void getBallSpeed(int id, int *speedX, int *speedY)
+{
+    *speedX = ballList[id-1].speedX;
+    *speedY = ballList[id-1].speedY;
+}
+
+int moveAllBall(void)
+{
+    int count = 0;
+
+    for(count; count<sizeof(ballList);count++)
+    {
+        if(!moveSingleBall(count+1))
+            break;
+    }
+    return count;
+}
+
+int getCountBalls(void)
+{
+    for(int i=0;i<sizeof(ballList);i++)
+    {
+        if(!moveSingleBall(i+1))
+            break;
+    }
+}
 
 static eCOLLISIONBALL checkCollisionEvent(int posX, int posY)
 {
@@ -115,10 +158,11 @@ static eCOLLISIONBALL checkCollisionEvent(int posX, int posY)
     else if(posX >= winX && posY <= 0 )     retColl = COLLISION_CORNER2;
     else if(posX >= winX && posY >= winY)   retColl = COLLISION_CORNER3;
     else if(posX <= 0 && posY >= winY)      retColl = COLLISION_CORNER4;
-    else if(posX >= winX)                   retColl = COLLISION_RIGHT;
+    if(posX >= winX)                   retColl = COLLISION_RIGHT;
     else if(posX <= 0)                      retColl = COLLISION_LEFT;
     else if(posY >= winY)                   retColl = COLLISION_DOWN;
     else if(posY <= 0)                      retColl = COLLISION_UP;
 
     return retColl;
 }
+

@@ -1,8 +1,9 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "graphics.h"
 #include "keyboard.h"
 #include "ball.h"
-
+// #include ""
 typedef enum
 {
     STATE_IDLE,
@@ -16,15 +17,22 @@ eCommand    usrInput = IDLE;
 
 int main(void)
 {
+    
     hideCursor();
-    createBall();
-    createBall();
+    // Creating ball
+    int randX,randY;
+    for(int i=0; i<100;i++)
+    {
+        randX = rand() % (200 - 1 +1) + 1;    
+        randY = rand() % (50 - 1 +1) + 1;
+        createBall(randX,randY);    
+    }
+    
     while(1)
     {
         usrInput = scanKeyboard();
-        moveBall(1);
-        moveBall(2);
         windowRefresh();
+        moveAllBall();
         switch (gameState)
         {
         case STATE_IDLE:
@@ -33,21 +41,14 @@ int main(void)
             switch (usrInput)
             {
             case GO_UP:
-                // ballList[0].posY--;//= ballList[0].speed;
                 break;
             case GO_DOWN:
-                // ballList[0].posY++;//= ballList[0].speed;
                 break;
             case GO_LEFT:
-                // createBall();
-                // ballList[0].posX--;//= ballList[0].speed;
                 break;
             case GO_RIGTH:
-                // destroyBall();
-                // ballList[0].posX++;//= ballList[0].speed;
                 break;
             case PAUSE:
-                // createBall();
                 break;
             case EXIT:
                 return 0;
