@@ -64,8 +64,9 @@ void getWindowSize(int *ptrX, int *ptrY)
 
 void windowRefresh(void)
 {    
-    int ballCount;
-    
+    static int ballCount,limit1,limit2,tmpPosx,tmpPosy,tmpImage;
+    clearScreen(); // Just for fast testing
+
     // Drawing balls
     for(ballCount = 0; ballCount<BALL_MAX_LIMIT; ballCount++)
     {
@@ -86,24 +87,16 @@ void windowRefresh(void)
     {
         if(barList[i].id !=0)
         {
-            int limit1,limit2,tmpPosx,tmpPosy,tmpImage;
-
-            if(barList[i].type == BAR_HORIZONTAL)
-            {
-                limit1 = barList[i].shape.width;
-                limit2 = barList[i].shape.height;
-            }else
-            {
-                limit1 = barList[i].shape.height;
-                limit2 = barList[i].shape.width;
-            }
+            
+            limit1 = barList[i].shape.width;
+            limit2 = barList[i].shape.height;
             tmpPosx     = barList[i].shape.posX;
             tmpPosy     = barList[i].shape.posY;
             tmpImage    = barList[i].shape.image;
 
-            for(int j=0; j<limit1; j++)
+            for(int j=0; j<limit1; j++) //2, 5
             {
-                for(int k=0; k<limit2; k++)
+                for(int k=0; k<limit2; k++) //5, 2
                 {
                     gotoxy(tmpPosx+j,tmpPosy+k);
                     putchar(tmpImage);

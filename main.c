@@ -22,6 +22,8 @@ void initSystem(void);
 int main(void)
 {
     initSystem();
+    createBar(10,10,1,5);
+    // createBar(20,20,5,2);
 
     while(1)
     {
@@ -38,16 +40,20 @@ int main(void)
             switch (usrInput)
             {
             case GO_UP:
-                randX = rand() % (200 - 1 +1) + 1;    
-                randY = rand() % (50 - 1 +1) + 1;
-                createBall(randX,randY);    
+                // randX = rand() % (200 - 1 +1) + 1;    
+                // randY = rand() % (50 - 1 +1) + 1;
+                // createBall(randX,randY);
+                moveSingleBar(1,MOVE_UP);
                 break;
             case GO_DOWN:
-                destroyBall();
+                moveSingleBar(1,MOVE_DOWN);
+                // destroyBall();
                 break;
             case GO_LEFT:
+                moveSingleBar(1,MOVE_LEFT);
                 break;
             case GO_RIGTH:
+                moveSingleBar(1,MOVE_RIGHT);
                 break;
             case PAUSE:
                 break;
