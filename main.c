@@ -23,7 +23,7 @@ int main(void)
 {
     initSystem();
     createBar(10,10,1,5);
-    // createBar(20,20,5,2);
+    // createBar(20,20,5,1);
 
     while(1)
     {

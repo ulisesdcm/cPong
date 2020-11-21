@@ -132,10 +132,10 @@ static eCollisionBarEvent checkCollisionEvent(int posX, int posY, int width, int
     else if(posX+width > winX && posY < 0)              retVal = COLLISION_CORNER2;
     else if(posX+width > winX && posY+height > winY)    retVal = COLLISION_CORNER3;
     else if(posX < 0 && posY+height > winY)             retVal = COLLISION_CORNER4;
-    else if(posX+width > winX)                          retVal = COLLISION_RIGHT;
+    else if(posX+width > winX-1)                        retVal = COLLISION_RIGHT;
     else if(posX < 0)                                   retVal = COLLISION_LEFT; 
-    else if(posY+height > winY)                         retVal = COLLISION_DOWN;
-    else if(posX < 0)                                   retVal = COLLISION_UP;
+    else if(posY+height > winY-1)                       retVal = COLLISION_DOWN;
+    else if(posY < 0)                                   retVal = COLLISION_UP;
 
     return retVal;       
 
