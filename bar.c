@@ -1,7 +1,6 @@
 #include "bar.h"
 #include "ball.h"
 #include "graphics.h"
-#include <stdio.h>
 
 static int barListIndex = 0;
 sBar barList[BAR_MAX_LIMIT];
