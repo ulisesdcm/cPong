@@ -1,6 +1,7 @@
 #include "bar.h"
 #include "ball.h"
 #include "graphics.h"
+#include <stdio.h>
 
 static int barListIndex = 0;
 sBar barList[BAR_MAX_LIMIT];
@@ -79,9 +80,12 @@ int moveSingleBar(int id, eBARMoveDirection direction)
     // Save old position
     barOldPos[0][indxBar] = barList[indxBar].shape.posX;
     barOldPos[1][indxBar] = barList[indxBar].shape.posY;
-
+     
     width   = barList[indxBar].shape.width;
     height  = barList[indxBar].shape.height;
+
+    newPosX = barList[indxBar].shape.posX;
+    newPosY = barList[indxBar].shape.posY;
 
     // Get new position
     switch(direction)
