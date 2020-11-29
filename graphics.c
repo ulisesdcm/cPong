@@ -8,7 +8,9 @@
 
 extern sBall ballList[BALL_MAX_LIMIT];
 extern sBar barList[BAR_MAX_LIMIT];
+
 extern int oldPostBall[2][BALL_MAX_LIMIT];
+extern int barOldPos[2][BAR_MAX_LIMIT];
 
 void clearScreen(void)
 {
@@ -64,8 +66,7 @@ void getWindowSize(int *ptrX, int *ptrY)
 
 void windowRefresh(void)
 {    
-    static int ballCount,limit1,limit2,tmpPosx,tmpPosy,tmpImage;
-    clearScreen(); // Just for fast testing
+    static int ballCount,width,height,tmpPosx,tmpPosy,tmpImage;
 
     // Drawing balls
     for(ballCount = 0; ballCount<BALL_MAX_LIMIT; ballCount++)
@@ -87,19 +88,19 @@ void windowRefresh(void)
     {
         if(barList[i].id !=0)
         {
-            
-            limit1 = barList[i].shape.width;
-            limit2 = barList[i].shape.height;
+            width      = barList[i].shape.width;
+            height      = barList[i].shape.height;
             tmpPosx     = barList[i].shape.posX;
             tmpPosy     = barList[i].shape.posY;
             tmpImage    = barList[i].shape.image;
 
-            for(int j=0; j<limit1; j++) //2, 5
+
+            for(int j=0; j<width; j++)
             {
-                for(int k=0; k<limit2; k++) //5, 2
+                for(int k=0; k<height; k++) 
                 {
                     gotoxy(tmpPosx+j,tmpPosy+k);
-                    putchar(tmpImage);
+                    putchar(tmpImage);                 
                 }
             }
         }else

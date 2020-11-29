@@ -40,9 +40,6 @@ int main(void)
             switch (usrInput)
             {
             case GO_UP:
-                // randX = rand() % (200 - 1 +1) + 1;    
-                // randY = rand() % (50 - 1 +1) + 1;
-                // createBall(randX,randY);
                 moveSingleBar(1,MOVE_UP);
                 break;
             case GO_DOWN:
@@ -56,6 +53,9 @@ int main(void)
                 moveSingleBar(1,MOVE_RIGHT);
                 break;
             case PAUSE:
+                randX = rand() % (200 - 1 +1) + 1;    
+                randY = rand() % (50 - 1 +1) + 1;
+                createBall(randX,randY);
                 break;
             case EXIT:
                 return 0;

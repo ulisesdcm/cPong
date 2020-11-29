@@ -77,8 +77,8 @@ int moveSingleBar(int id, eBARMoveDirection direction)
         return 0;
 
     // Save old position
-    barOldPos[0][indxBar] = barList[indxBar].shape.posX;
-    barOldPos[1][indxBar] = barList[indxBar].shape.posY;
+    // barOldPos[0][indxBar] = barList[indxBar].shape.posX;
+    // barOldPos[1][indxBar] = barList[indxBar].shape.posY;
      
     width   = barList[indxBar].shape.width;
     height  = barList[indxBar].shape.height;
@@ -91,15 +91,24 @@ int moveSingleBar(int id, eBARMoveDirection direction)
     {
         case MOVE_UP:
             newPosY = barList[indxBar].shape.posY - barList[indxBar].speedY;
+            barOldPos[0][indxBar] = barList[indxBar].shape.posX;
+            barOldPos[1][indxBar] = barList[indxBar].shape.posY + height;
             break;    
+
         case MOVE_DOWN:
             newPosY = barList[indxBar].shape.posY + barList[indxBar].speedY;
+            barOldPos[0][indxBar] = barList[indxBar].shape.posX;
+            barOldPos[1][indxBar] = barList[indxBar].shape.posY;
             break;
         case MOVE_LEFT:
             newPosX = barList[indxBar].shape.posX - barList[indxBar].speedX;
+            barOldPos[0][indxBar] = barList[indxBar].shape.posX + width;
+            barOldPos[1][indxBar] = barList[indxBar].shape.posY;
             break;
         case MOVE_RIGHT:
             newPosX = barList[indxBar].shape.posX + barList[indxBar].speedX;
+            barOldPos[0][indxBar] = barList[indxBar].shape.posX;
+            barOldPos[1][indxBar] = barList[indxBar].shape.posY;
             break;
     }
 
